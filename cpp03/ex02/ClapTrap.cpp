@@ -1,12 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mehaydin <mehaydin@student.42kocaeli.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/13 03:33:23 by mehaydin          #+#    #+#             */
+/*   Updated: 2023/08/13 03:33:23 by mehaydin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(){}
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoint(10), energyPoint(10),attackDamage(0)
 {
-    std::cout << "Constructor call" << std::endl;
+    std::cout << this->getName() <<": Constructor call" << std::endl;
+}
+ClapTrap::ClapTrap(const ClapTrap& copy)
+{
+    *this = copy;
 }
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor call" << std::endl;
+    std::cout << this->getName()<<": Destructor call" << std::endl;
+}
+ClapTrap& ClapTrap::operator=(const ClapTrap& copy)
+{
+    this->name = copy.name;
+    this->hitPoint = copy.hitPoint;
+    this->energyPoint = copy.energyPoint;
+    this->attackDamage = copy.attackDamage;
+    return *this;
 }
 void ClapTrap::setVar(std::string name,int hitPoint, int energyPoint, int attackDamage)
 {
